@@ -4,9 +4,9 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 /**
- * The "AN" personal mark — built from circuit-like strokes and node points,
- * not text inside a circle. Reads as a geometric A + N joined by engineering
- * nodes. `animate` draws it stroke-by-stroke for the identity moment.
+ * The "AN" personal mark — kept from the original portfolio (the user
+ * requested the video hero remain untouched, and the preloader uses this
+ * mark). Build from circuit-like strokes and node points, not text.
  */
 export function Monogram({
   className,
@@ -20,11 +20,8 @@ export function Monogram({
   const reduce = useReducedMotion();
 
   const stroke = 'currentColor';
-  // A — left leg, right leg, crossbar
   const aPaths = ['M 11 46 L 30 10', 'M 30 10 L 49 46', 'M 18 32 L 42 32'];
-  // N — left vertical, diagonal, right vertical
   const nPaths = ['M 55 46 L 55 10', 'M 55 10 L 91 46', 'M 91 46 L 91 10'];
-  // node points at joints
   const nodes: Array<[number, number]> = [
     [11, 46],
     [30, 10],
@@ -36,12 +33,6 @@ export function Monogram({
     [91, 46],
     [91, 10],
   ];
-
-  const draw = {
-    initial: reduce || !animate ? { pathLength: 1 } : { pathLength: 0 },
-    animate: { pathLength: 1 },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
-  };
 
   const paths = [...aPaths, ...nPaths];
 
@@ -61,7 +52,7 @@ export function Monogram({
           strokeWidth={3.2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          initial={draw.initial}
+          initial={reduce || !animate ? { pathLength: 1 } : { pathLength: 0 }}
           animate={animate ? { pathLength: 1 } : undefined}
           transition={{ duration: 0.7, delay: animate ? i * 0.12 : 0, ease: [0.16, 1, 0.3, 1] }}
         />
@@ -78,7 +69,6 @@ export function Monogram({
           transition={{ duration: 0.3, delay: animate ? 0.7 + i * 0.05 : 0, ease: 'backOut' }}
         />
       ))}
-      {/* accent apex dot */}
       <motion.circle
         cx={30}
         cy={10}

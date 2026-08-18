@@ -14,7 +14,7 @@ export function ProjectVisual({ project, className }: { project: Project; classN
   const W = 400;
   const H = 260;
   const variant = project.variant ?? 'orbit';
-  const labelColor = 'rgba(244,242,239,0.45)';
+  const labelColor = 'rgba(20,20,20,0.45)';
   const edgeColor = project.accent;
 
   const pos = (i: number): { x: number; y: number } => {
@@ -60,13 +60,14 @@ export function ProjectVisual({ project, className }: { project: Project; classN
         </radialGradient>
       </defs>
 
+      <rect width={W} height={H} fill="#faf6ee" />
       <circle cx={W / 2} cy={H / 2} r={180} fill={`url(#pv-${project.slug})`} />
 
       {points.map((p, i) => {
         const q = points[(i + 1) % n];
         return (
           <g key={`e-${i}`}>
-            <line x1={p.x} y1={p.y} x2={q.x} y2={q.y} stroke={edgeColor} strokeOpacity={0.22} strokeWidth={1.2} />
+            <line x1={p.x} y1={p.y} x2={q.x} y2={q.y} stroke={edgeColor} strokeOpacity={0.35} strokeWidth={1.2} />
             <motion.circle
               r={2.4}
               fill={edgeColor}
@@ -86,7 +87,7 @@ export function ProjectVisual({ project, className }: { project: Project; classN
         return (
           <g key={`n-${i}`}>
             <circle cx={p.x} cy={p.y} r={r + 5} fill={edgeColor} opacity={0.08} />
-            <circle cx={p.x} cy={p.y} r={r} fill="none" stroke={edgeColor} strokeWidth={1.6} />
+            <circle cx={p.x} cy={p.y} r={r} fill="white" stroke={edgeColor} strokeWidth={1.6} />
             <circle cx={p.x} cy={p.y} r={2.2} fill={edgeColor} />
             <text x={p.x} y={p.y + r + 13} textAnchor="middle" fill={labelColor} fontSize="7.5" fontFamily="ui-monospace, monospace" letterSpacing="0.4">
               {node.label}
