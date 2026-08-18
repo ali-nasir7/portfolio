@@ -5,10 +5,8 @@ import { Mail, Linkedin, Github, Loader2, Check, AlertCircle, ArrowUpRight } fro
 import { site } from '@/data/site';
 import { Reveal } from './Reveal';
 import { MagneticButton } from './MagneticButton';
-import { Signature } from './Signature';
 import { cn } from '@/lib/utils';
 
-/** Contact form handler — leave empty for an honest mailto: fallback. */
 const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
@@ -58,12 +56,12 @@ export function ContactSection() {
 
   const inputCls = (err?: string) =>
     cn(
-      'w-full rounded-xl border bg-bg-900 px-4 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-accent/60',
+      'w-full rounded-xl border bg-bg-700 px-4 py-3 text-sm text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-accent/60',
       err ? 'border-rose-500/50' : 'border-line'
     );
 
   return (
-    <section id="contact" className="relative scroll-mt-24 border-t border-line">
+    <section id="contact" className="relative scroll-mt-24">
       <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[500px] rounded-full bg-accent/[0.05] blur-[140px]" />
       <div className="mx-auto max-w-6xl px-6 py-28 sm:px-8 md:py-36">
         <Reveal>
@@ -87,7 +85,7 @@ export function ContactSection() {
                   key={c.label}
                   href={c.href}
                   {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="group flex items-center justify-between rounded-2xl border border-line bg-surface px-6 py-5 transition-all hover:border-accent/40"
+                  className="group flex items-center justify-between rounded-2xl border border-line bg-bg-700 px-6 py-5 transition-all hover:border-accent/40"
                 >
                   <div className="flex items-center gap-4">
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-fg/[0.03] text-accent">{c.icon}</span>
@@ -106,7 +104,7 @@ export function ContactSection() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={onSubmit} noValidate className="surface rounded-2xl p-6 sm:p-8">
+            <form onSubmit={onSubmit} noValidate className="rounded-2xl border border-line bg-bg-700 p-6 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.08)] sm:p-8">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="font-mono-tech mb-1.5 block text-[10px] tracking-[0.18em] text-fg-faint">NAME</label>
@@ -147,7 +145,7 @@ export function ContactSection() {
               </div>
 
               {status === 'success' && !CONTACT_ENDPOINT && (
-                <p className="mt-3 flex items-center gap-2 text-xs text-emerald-400">
+                <p className="mt-3 flex items-center gap-2 text-xs text-emerald-500">
                   <Check size={13} /> Your email client should open with the message pre-filled.
                 </p>
               )}
@@ -157,20 +155,13 @@ export function ContactSection() {
                 </p>
               )}
               {status === 'success' && CONTACT_ENDPOINT && (
-                <p className="mt-3 flex items-center gap-2 text-xs text-emerald-400">
+                <p className="mt-3 flex items-center gap-2 text-xs text-emerald-500">
                   <Check size={13} /> Thanks — I&apos;ll get back to you shortly.
                 </p>
               )}
             </form>
           </Reveal>
         </div>
-
-        <Reveal delay={0.15}>
-          <div className="mt-20 flex flex-col items-center">
-            <Signature className="text-fg-muted" />
-            <p className="font-mono-tech mt-4 text-[10px] tracking-[0.24em] text-fg-faint">ALI NASIR</p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

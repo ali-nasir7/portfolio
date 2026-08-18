@@ -5,35 +5,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark premium base — deep charcoal, not pure black
+        // Light premium base — warm cream / off-white
         bg: {
-          DEFAULT: '#0b0b0c',
-          900: '#0e0e10',
-          800: '#121214',
-          700: '#17171a',
-          600: '#1d1d21',
+          DEFAULT: '#efe9df',
+          900: '#f5f0e7',
+          800: '#faf6ee',
+          700: '#ffffff',
         },
-        surface: '#161618',
-        surface2: '#1e1e22',
-        // Warm off-white typography
+        surface: '#ffffff',
+        surface2: '#fbf7ef',
+        // Dark typography
         fg: {
-          DEFAULT: '#f4f2ef',
-          muted: '#a5a09a',
-          faint: '#5e5a54',
+          DEFAULT: '#1a1a1a',
+          strong: '#0a0a0a',
+          muted: '#6b6b6b',
+          faint: '#a09a8e',
         },
-        // Restrained accent — warm amber
+        // Restrained accent — orange
         accent: {
-          DEFAULT: '#e3a856',
-          dim: '#c08d3f',
-          soft: 'rgba(227,168,86,0.14)',
+          DEFAULT: '#ff5b1f',
+          dim: '#e84a13',
+          2: '#ff7a3d',
+          soft: 'rgba(255,91,31,0.12)',
         },
-        // Cool secondary for technical metadata
+        // Cool secondary
         steel: {
-          DEFAULT: '#9db4d0',
-          dim: '#6d829c',
+          DEFAULT: '#7b8aa3',
+          dim: '#5b6a82',
         },
-        line: 'rgba(244,242,239,0.08)',
-        'line-strong': 'rgba(244,242,239,0.16)',
+        line: 'rgba(20,20,20,0.08)',
+        'line-strong': 'rgba(20,20,20,0.18)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
@@ -69,11 +70,16 @@ const config: Config = {
           '0%': { transform: 'translateX(-120%) rotate(12deg)' },
           '100%': { transform: 'translateX(220%) rotate(12deg)' },
         },
+        'marquee-slow': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'pulse-dot': 'pulse-dot 2s ease-in-out infinite',
         'float-slow': 'float-slow 6s ease-in-out infinite',
         marquee: 'marquee 32s linear infinite',
+        'marquee-slow': 'marquee-slow 60s linear infinite',
         'ken-burns': 'ken-burns 24s ease-in-out infinite alternate',
         shine: 'shine 5s ease-in-out infinite',
       },

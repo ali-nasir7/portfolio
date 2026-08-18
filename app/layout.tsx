@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#f7f4ee',
+  themeColor: '#efe9df',
   width: 'device-width',
   initialScale: 1,
 };
@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               jobTitle: site.role,
               email: site.email,
               url: site.url,
-              sameAs: [site.socials.github, site.socials.linkedin],
+              sameAs: [site.socials.github, site.socials.linkedin, site.socials.twitter],
               knowsAbout: [
                 'Software Engineering',
                 'Java',
@@ -73,6 +73,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 'Distributed Systems',
                 'PostgreSQL',
                 'Apache Kafka',
+                'AI Systems',
+                'AI Agents',
               ],
             }),
           }}

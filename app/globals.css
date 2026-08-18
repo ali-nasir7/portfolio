@@ -3,24 +3,34 @@
 @tailwind utilities;
 
 /* ============================================================
-   DESIGN SYSTEM — "an exceptional software engineer's digital experience"
-   Dark premium: deep charcoal, warm off-white type, one restrained amber accent.
+   DESIGN SYSTEM — "the Aliyan portfolio clone"
+   Light premium: warm off-white base, deep charcoal type, one restrained
+   orange accent, thin lines. Serif italic for accent words.
    ============================================================ */
 
 :root {
-  --bg: #0b0b0c;
-  --bg-2: #0e0e10;
-  --surface: #161618;
-  --surface-2: #1e1e22;
-  --fg: #f4f2ef;
-  --fg-muted: #a5a09a;
-  --fg-faint: #5e5a54;
-  --line: rgba(244, 242, 239, 0.08);
-  --line-strong: rgba(244, 242, 239, 0.16);
-  --accent: #e3a856;
-  --accent-dim: #c08d3f;
-  --steel: #9db4d0;
-  --radius: 18px;
+  --bg: #efe9df;        /* warm off-white / cream */
+  --bg-2: #f5f0e7;      /* slightly lighter */
+  --bg-3: #faf6ee;      /* lightest */
+  --surface: #ffffff;
+  --surface-2: #fbf7ef;
+  --fg: #1a1a1a;        /* near-black, soft */
+  --fg-strong: #0a0a0a;
+  --fg-muted: #6b6b6b;
+  --fg-faint: #a09a8e;
+  --line: rgba(20, 20, 20, 0.08);
+  --line-strong: rgba(20, 20, 20, 0.18);
+  --accent: #ff5b1f;    /* signature orange */
+  --accent-2: #ff7a3d;
+  --accent-3: #ffe5d6;
+  --radius: 14px;
+  /* Hero stays dark (we never touch it) */
+  --hero-bg: #0b0b0c;
+  --hero-fg: #f4f2ef;
+  --hero-muted: #a5a09a;
+  --hero-faint: #5e5a54;
+  --hero-accent: #e3a856;
+  --hero-line: rgba(244, 242, 239, 0.08);
 }
 
 * {
@@ -28,14 +38,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 body {
@@ -50,24 +54,23 @@ body {
 }
 
 ::selection {
-  background: rgba(227, 168, 86, 0.24);
-  color: var(--fg);
+  background: rgba(255, 91, 31, 0.18);
+  color: var(--fg-strong);
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #232327;
-  border-radius: 8px;
-  border: 2px solid var(--bg);
+  background: #d3cabc;
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #32323a;
+  background: #b3a896;
 }
 
 :focus-visible {
@@ -79,10 +82,10 @@ body {
 @layer components {
   .tech-label {
     font-family: var(--font-mono), ui-monospace, monospace;
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--fg-faint);
+    color: var(--fg-muted);
   }
 
   /* editorial serif italic accent for headline words */
@@ -90,16 +93,17 @@ body {
     font-family: var(--font-instrument), Georgia, serif;
     font-style: italic;
     font-weight: 400;
+    color: var(--accent);
   }
 
   /* elevated card surface */
   .surface {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)) , var(--surface);
+    background: var(--surface);
     border: 1px solid var(--line);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 0 20px 50px -30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 1) inset, 0 20px 50px -30px rgba(0, 0, 0, 0.12);
   }
 
-  /* faint engineering grid (dark) */
+  /* faint line bg */
   .grid-bg {
     background-image:
       linear-gradient(var(--line) 1px, transparent 1px),
@@ -157,4 +161,15 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
+
+/* hero region preserves the original dark look */
+.hero-region {
+  background: var(--hero-bg);
+  color: var(--hero-fg);
+  --fg: var(--hero-fg);
+  --fg-muted: var(--hero-muted);
+  --fg-faint: var(--hero-faint);
+  --accent: var(--hero-accent);
+  --line: var(--hero-line);
 }

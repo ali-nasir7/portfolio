@@ -1,92 +1,51 @@
 /**
- * Services / capabilities — presented as an interactive experience, not a grid.
- * Honest: these describe what I offer, tied to real experience where applicable.
+ * Services / capabilities — presented as cards (matching the target about page).
+ * Each card pairs a title with a single-line subtitle (per the target layout).
  */
 export interface Service {
   id: string;
   title: string;
-  short: string;
-  description: string;
-  accent?: boolean;
+  subtitle: string;
+  /** which about-image (1-6) is used for this card */
+  imageKey: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export const services: Service[] = [
   {
-    id: 'se',
-    title: 'Software Engineering',
-    short: 'End-to-end product engineering',
-    description: 'Taking a problem from idea to a working product — architecture, build, integration and delivery.',
-  },
-  {
-    id: 'backend',
-    title: 'Backend Development',
-    short: 'Robust, secure server-side systems',
-    description: 'Production-grade services in Java and Spring Boot, following Clean Architecture and SOLID principles.',
-    accent: true,
-  },
-  {
-    id: 'java',
-    title: 'Java / Spring Boot',
-    short: 'Enterprise-grade application development',
-    description: 'Spring Security, JPA/Hibernate, REST APIs, JWT auth and RBAC — the stack behind my real production work.',
-  },
-  {
-    id: 'web',
-    title: 'Web Development',
-    short: 'Responsive, polished interfaces',
-    description: 'HTML, CSS and JavaScript — building the client side of web products, including interactive dashboards.',
-  },
-  {
-    id: 'ai-systems',
-    title: 'AI Systems',
-    short: 'Software with intelligence baked in',
-    description: 'Designing systems that integrate AI meaningfully — like PipelineIQ\u2019s AI-powered failure analysis.',
-    accent: true,
+    id: 'custom',
+    title: 'Custom Development',
+    subtitle: 'UI/UX Developer',
+    imageKey: 5,
   },
   {
     id: 'chatbots',
-    title: 'AI Chatbots',
-    short: 'Conversational, automated assistants',
-    description: 'Building chatbot-style experiences on top of the OpenAI API and language models.',
+    title: 'Chatbots Development',
+    subtitle: 'AI Chatbot Engineer',
+    imageKey: 1,
   },
   {
-    id: 'ai-integration',
-    title: 'AI Integration',
-    short: 'Weaving AI into real workflows',
-    description: 'Connecting the OpenAI API to production logic — root cause, classification, recommendations.',
+    id: 'website',
+    title: 'Website Development',
+    subtitle: 'Next.js Developer',
+    imageKey: 4,
+  },
+  {
+    id: 'ai-systems',
+    title: 'AI System Engineering',
+    subtitle: 'Backend · AI Integration',
+    imageKey: 3,
+  },
+  {
+    id: 'ai-agents',
+    title: 'AI Agents Development',
+    subtitle: 'Agents Developer',
+    imageKey: 2,
   },
   {
     id: 'automation',
     title: 'Workflow Automation',
-    short: 'Reducing manual effort with systems',
-    description: 'Event-driven pipelines (Kafka) and CI/CD that automate repetitive work — as built in PipelineIQ.',
-    accent: true,
-  },
-  {
-    id: 'architecture',
-    title: 'System Architecture',
-    short: 'Design that scales from day one',
-    description: 'Multi-tenancy, service decomposition and clean module boundaries for maintainable systems.',
-  },
-  {
-    id: 'api',
-    title: 'API Development',
-    short: 'REST APIs with auth & access control',
-    description: '~20–25 endpoints delivered for SSGC FARS; dozens more across NexusERP and PipelineIQ.',
-    accent: true,
-  },
-  {
-    id: 'database',
-    title: 'Database Systems',
-    short: 'Relational data layers that stay fast',
-    description: 'PostgreSQL, MySQL and Oracle — schema design, indexing and server-side pagination.',
-  },
-  {
-    id: 'cloud',
-    title: 'Cloud / Deployment',
-    short: 'Containerized, automated, live',
-    description: 'Docker, GitHub Actions CI/CD and VPS deployment — shipping software that runs in production.',
-    accent: true,
+    subtitle: 'Distributed Systems',
+    imageKey: 6,
   },
 ];
 
@@ -95,26 +54,38 @@ export const journey = [
   {
     num: '01',
     title: 'Plan the workflow',
-    phase: 'PHASE 1',
+    phase: 'Phase 1',
     body: 'I map the problem before writing a line of code — architecture, data boundaries and the flows between them.',
   },
   {
     num: '02',
-    title: 'Build with purpose',
-    phase: 'PHASE 2',
+    title: 'Build with Passion',
+    phase: 'Phase 2',
     body: 'Backend systems, APIs, databases and AI integrations — built for maintainability, not just to work once.',
   },
   {
     num: '03',
-    title: 'Deliver the product',
-    phase: 'PHASE 3',
+    title: 'Deliver the best',
+    phase: 'Phase 3',
     body: 'Deployment, integration and delivery. I take ownership until the software is live and actually solves the problem.',
   },
 ];
 
-/** Three key areas of expertise (numbered list). */
+/** Three key areas of expertise (matches target's "Areas of Expertise" block). */
 export const expertise = [
-  { num: '01', title: 'Backend Engineering', body: 'Production-grade Java and Spring Boot services — secure, scalable, and built to last.' },
-  { num: '02', title: 'AI Systems & Integration', body: 'Weaving the OpenAI API and LLMs into real workflows — analysis, chatbots and automation.' },
-  { num: '03', title: 'System Architecture', body: 'Multi-tenancy, event-driven design and clean module boundaries for maintainable systems.' },
+  {
+    num: '01',
+    title: 'Web Development',
+    body: 'We build scalable, high-performance web applications using modern technologies like Next.js and FastAPI. Our code is clean, maintainable, and built to last.',
+  },
+  {
+    num: '02',
+    title: 'AI Chatbots & Agents',
+    body: 'We build intelligent AI-powered chatbots that automate support, improve customer experience, and deliver instant, human-like responses across your platforms.',
+  },
+  {
+    num: '03',
+    title: 'AI Automations',
+    body: 'We develop end-to-end automation systems that streamline business processes, reduce manual effort, and improve productivity using AI-driven workflows.',
+  },
 ];

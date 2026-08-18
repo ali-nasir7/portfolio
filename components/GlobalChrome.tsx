@@ -1,26 +1,24 @@
 'use client';
 
 import { useApp, useAmbientSound } from '@/lib/app-context';
-import { ScrollProgress } from './ScrollProgress';
 import { Navigation } from './Navigation';
-import { CommandPalette } from './CommandPalette';
-import { HiddenTerminal } from './HiddenTerminal';
-import { DeveloperMode } from './DeveloperMode';
-import { AIOrb } from './AIOrb';
+import { SmoothScroll } from './SmoothScroll';
 
-/** Persistent, app-wide UI chrome mounted once in the root layout. */
+/**
+ * App-wide UI chrome mounted once in the root layout.
+ * In the new (target-style) design, the only persistent chrome is the
+ * top navigation — the AI orb, command palette, hidden terminal and
+ * developer-mode easter eggs were part of the old dark design and have
+ * been removed for visual consistency.
+ */
 export function GlobalChrome() {
   const { soundOn } = useApp();
   useAmbientSound(soundOn);
 
   return (
     <>
-      <ScrollProgress />
+      <SmoothScroll />
       <Navigation />
-      <CommandPalette />
-      <HiddenTerminal />
-      <DeveloperMode />
-      <AIOrb />
     </>
   );
 }

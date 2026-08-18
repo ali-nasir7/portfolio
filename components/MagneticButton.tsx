@@ -47,10 +47,10 @@ export function MagneticButton({
   const base =
     'group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-colors duration-300 select-none';
   const variants: Record<Variant, string> = {
-    primary: 'bg-fg text-bg hover:bg-white',
+    primary: 'bg-fg text-bg hover:bg-fg-strong',
     accent: 'bg-accent text-bg hover:bg-accent-dim',
-    outline: 'border border-line-strong text-fg hover:border-fg/40 hover:bg-fg/[0.03]',
-    ghost: 'text-fg hover:text-white',
+    outline: 'border border-fg/60 text-fg hover:border-fg hover:bg-fg hover:text-bg',
+    ghost: 'text-fg hover:text-accent',
   };
 
   const content = (
